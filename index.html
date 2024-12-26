@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحذير - تم الاختراق!</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            padding: 50px;
+        }
+        .warning {
+            font-size: 12px;
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            color: yellow;
+        }
+        h1 {
+            font-size: 50px;
+            text-shadow: 2px 2px 5px red;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+        .alert {
+            animation: flicker 1s infinite alternate;
+        }
+        #message {
+            color: green;
+            font-size: 25px;
+            margin-top: 20px;
+        }
+        button {
+            background-color: red;
+            color: black;
+            font-size: 20px;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px; 
+            transition: all 0.3s ease-in-out; 
+        }
+        button:hover {
+            background-color: black;
+            color: green;
+            border: 2px solid green;
+            box-shadow: 0 0 10px green, 0 0 20px green; 
+        }
+        @keyframes flicker {
+            0% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <div class="warning">⚠ الموقع غير آمن، استخدم بحذر</div>
+    <h1 class="alert">تحذير: تم اختراق جهازك!</h1>
+    <p>تم الاستيلاء على جميع ملفاتك، وحساباتك البنكية ليست آمنة!</p>
+    <button onclick="revealMessage()">اضغط هنا للحل</button>
+    <p id="message" style="display:none;">هزار يا باشا، كله تمام 😊</p>
+
+    <script>
+        function revealMessage() {
+            document.getElementById("message").style.display = "block";
+        }
+    </script>
+</body>
+</html>
