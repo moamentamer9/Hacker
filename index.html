@@ -11,6 +11,7 @@
             font-family: 'Courier New', Courier, monospace;
             text-align: center;
             padding: 50px;
+            overflow: hidden;
         }
         .warning {
             font-size: 12px;
@@ -35,6 +36,48 @@
             0% { opacity: 1; }
             100% { opacity: 0.3; }
         }
+        .loading-text {
+            font-size: 24px;
+            color: white;
+            margin-top: 30px;
+        }
+        .progress-bar-container {
+            position: relative;
+            width: 60%;
+            height: 15px;
+            background-color: #555;
+            border-radius: 5px;
+            margin: 30px auto;
+        }
+        .progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: #00FF00;
+            border-radius: 5px;
+            animation: loading 60s linear forwards;
+        }
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        .cancel-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 5px 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .cancel-button:hover {
+            background-color: darkred;
+        }
     </style>
 </head>
 <body>
@@ -42,11 +85,28 @@
     <h1 class="alert">تحذير: تم اختراق جهازك!</h1>
     <p>تم الاستيلاء على جميع ملفاتك، وحساباتك البنكية ليست آمنة!</p>
 
+    <div class="loading-text">جاري تحميل الملفات والفيديوهات الخاصة بك...</div>
+
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
+
+    <button class="cancel-button" onclick="playAudio()">إلغاء</button>
+
+    <audio id="alert-audio" loop>
+        <source src="mixkit-sound-alert-in-hall-1006.wav" type="audio/mpeg">
+    </audio>
+
     <script>
-        setTimeout(function() {
+         setTimeout(function() {
             document.body.style.color = "green";
-            alert(" مقلب يا غالي ، مفيش حاجه اتهكرت 😂");
-        }, 6000);
+            alert("مقلب يا غالي، مفيش حاجه اتهكرت 😂");
+        }, 60000);
+        function playAudio() {
+            const audio = document.getElementById('alert-audio');
+            audio.volume = 1;
+            audio.play();
+        }
     </script>
 </body>
 </html>
